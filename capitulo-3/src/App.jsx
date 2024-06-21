@@ -4,7 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Page1 from './modules/page1'
 import Page2 from './modules/page2'
-import Page3 from './modules/page2'
+import Page3 from './modules/page3'
+import Page4 from './modules/page4'
+import Page5 from './modules/page5'
+
 import ModuleTitle from './modules/moduletitle'
 
 function App() {
@@ -12,14 +15,16 @@ function App() {
 
   return (
     <>
-  <ModuleTitle></ModuleTitle>
 
-    <div class="scoll-container">
-  
+    <div className="scoll-container">
+    <ModuleTitle></ModuleTitle>
+
     <Page1></Page1>
    <Page2></Page2>
-   <Page3></Page3>
-  <footer class="scroll-item">Footer</footer>
+   <Page3></Page3> 
+   <Page4></Page4>
+   <Page5></Page5>
+  <footer className="scroll-item"><h1>Gracias por leer. 📘</h1> </footer>
 </div>
 
 
