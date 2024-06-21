@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  font-size: 20px;
+  box-sizing: border-box;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+header,
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #7D6E83;
+  color: #fff;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  z-index: 100;
+}
+
+section {
+  height: max-content;
+  
+  min-height: 100vh;
+  padding-top: 70px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+section:nth-of-type(1),
+section:nth-of-type(1) h2 {
+  background: #F8EDE3;
+}
+
+section:nth-of-type(2),
+section:nth-of-type(2) h2 {
+  background: #DFD3C3;
+}
+
+section:nth-of-type(3),
+section:nth-of-type(3) h2 {
+  background: #D0B8A8;
+}
+
+h2 {
+  position: sticky;
+  top: 70px;
+  padding: 20px;
+  color: #7D6E83;
+}
+
+footer {
+  height: 100px;
+}
+
+.scroll-item {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.title{
+
+  width: 100%;
+
+  position: absolute;
+  top: 40%;
+  font-size: 7rem;
+
+  
+}
+.cap{
+
+  width: 100%;
+
+  position: absolute;
+  top: 20%;
+  font-size: 4rem;
+
+  
+}
+.justify{
+  text-align: justify;
+  text-justify: inter-word;
+}
+.subtitle{
+
+
+
+  font-size: 4rem;
+
+  
+}
+
+.zoom {
+  padding: 50px;
+
+  transition: transform .2s; /* Animation */
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
