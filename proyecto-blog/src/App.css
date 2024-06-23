@@ -170,3 +170,27 @@ h3 {
   opacity: 0;
   cursor: pointer;
 }
+
+
+
+
+
+.sinblur {
+
+
+  -webkit-backdrop-filter: blur(2rem);
+background-size: cover;
+  backdrop-filter: blur(2rem);
+
+  
+
+}
+
+.blur {
+
+    background: url({fondo})  center;
+  
+    background-size: cover;
+
+
+  }

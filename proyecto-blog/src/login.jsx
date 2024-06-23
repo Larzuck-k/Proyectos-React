@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom';
-
+import Fondo from "./assets/images/fondo.png";
 const Login = () => {
-  document.body.style = "background: #0e1b25;";
+  document.body.style = `background: #0e1b25; 
+  background-image: url(${Fondo}); 
+   background-repeat: no-repeat;   
+     -webkit-backdrop-filter: blur(2rem);
+  backdrop-filter: blur(2rem);
 
+   background-position: center;
+background-size: cover;`;
   return (
     <>
       <div
@@ -38,11 +44,13 @@ const Login = () => {
                 </div>
                 <br />
                 <div className="text-end">
-           
-                  <button type="submit" className="btn btn-primary">
-                    Iniciar sesión
-                  </button>
-                </div>
+                  <a href="/index" className="m-1 btn btn-dark">
+                      regresar
+                    </a>
+                    <button type="submit" className="m-1 btn btn-primary">
+                      Ingresar
+                    </button>
+                  </div>
               </form>
             </div>
           </div>

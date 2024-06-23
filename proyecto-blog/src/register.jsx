@@ -1,9 +1,15 @@
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import Fondo from "./assets/images/fondo.png";
 import { useState } from "react";
 const Register = () => {
-  document.body.style = "background: #0e1b25;";
+  document.body.style = `background: #0e1b25; 
+  background-image: url(${Fondo}); 
+   background-repeat: no-repeat;   
+     -webkit-backdrop-filter: blur(2rem);
+  backdrop-filter: blur(2rem);
 
+   background-position: center;
+background-size: cover;`;
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
 
@@ -51,7 +57,7 @@ const Register = () => {
                     id="password"
                   />
                 </div>
-<br />
+                <br />
                 <div className="form-group ">
                   <label htmlFor="image">Imagen de perfil:⠀⠀⠀⠀⠀⠀⠀</label>
                   <div className="image-upload">
@@ -74,7 +80,10 @@ const Register = () => {
                           alignItems: "center",
                         }}
                       >
-                        <i className="fas fa-camera" style={{ fontSize: "24px" }} />
+                        <i
+                          className="fas fa-camera"
+                          style={{ fontSize: "24px" }}
+                        />
                       </div>
                     )}
                     <input
@@ -87,12 +96,18 @@ const Register = () => {
                 </div>
 
                 <br />
-                <div className="text-end">
-                  {" "}
-                  <button type="submit" className="btn btn-primary">
-                    Regístrate
-                  </button>
-                </div>
+           
+
+                  <div className="text-end">
+                  <a href="/index" className="m-1 btn btn-dark">
+                      regresar
+                    </a>
+                    <button type="submit" className="m-1 btn btn-primary">
+                      Regístrate
+                    </button>
+                  </div>
+
+            
               </form>
             </div>
           </div>
