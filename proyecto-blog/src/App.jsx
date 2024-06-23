@@ -27,13 +27,7 @@ function App() {
                 </a>{" "}
                 <p></p>
                 <br />
-                <a href="#">
-                  <img
-                    src="https://via.placeholder.com/700x400"
-                    alt=""
-                    className="img-fluid mb20 rounded-3"
-                  ></img>
-                </a>
+              
                 <a href="#">
                   <h3 className="link-light text-decoration-none">Standard post title</h3>
                 </a>
