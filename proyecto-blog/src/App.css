@@ -23,7 +23,7 @@ a{
   content: '';
   top: 0;
   bottom: 0;
-  left: 303px;
+  left: 134px;
   right: auto;
   height: 100%;
   width: 3px;
@@ -43,14 +43,14 @@ a{
   background: -webkit-linear-gradient(top, #21395c, rgba(52, 152, 219, 0));
   background: linear-gradient(to bottom, #21395c, rgba(52, 152, 219, 0));
   top: 100%;
-  left: 303px;
+  left: 134px;
   
       -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
 }
 
 .vtimeline-content {
-  margin-left: 350px;
+  margin-left: 180px;
   background: #132135;
 
   padding: 35px 20px;
@@ -91,7 +91,7 @@ a{
   text-align: center;
   line-height: 50px;
   z-index: 99;
-  margin-left: 280px;
+  margin-left: 110px;
 }
 
 .vtimeline-icon i {
@@ -102,7 +102,7 @@ a{
 }
 
 .vtimeline-date {
-  width: 260px;
+  width: 100px;
   text-align: right;
   position: absolute;
   left: 0;

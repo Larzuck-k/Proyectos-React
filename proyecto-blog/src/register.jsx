@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Fondo from "./assets/images/fondo.png";
 import { useState } from "react";
+import Swal from 'sweetalert2'
 const Register = () => {
   document.body.style = `background: #0e1b25; 
   background-image: url(${Fondo}); 
@@ -17,6 +18,61 @@ background-size: cover;`;
     setImage(e.target.files[0]);
     setPreview(URL.createObjectURL(e.target.files[0]));
   };
+
+
+
+
+  //Register
+
+
+  
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+    const user = document.getElementById('username').value;
+
+  const photo = document.getElementById('image').files[0];
+
+  const formData = new FormData();
+  formData.append('user', user);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('photo', photo);
+
+  fetch('http://localhost:3000/usuario/create', {
+    method: 'POST',
+    body: formData,
+  })
+  .then(response => response.json())
+  .then(data =>{
+    if(data.status == "success"){
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: data.mensaje,
+        showConfirmButton: false,
+        timer: 1500
+      });
+      setTimeout(() => {
+        window.location.href = '/index';
+      }, "2000");
+    }
+    if(data.status != "success"){
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: data.mensaje,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  })
+  
+};
+
 
   return (
     <>
@@ -38,7 +94,7 @@ background-size: cover;`;
 
           <div className="card mt-3 col-5" style={{ width: "25rem" }}>
             <div className="card-body">
-              <form>
+            <form  onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="form-group">
                   <label htmlFor="username">Usuario</label>
                   <input type="text" className="form-control" id="username" />

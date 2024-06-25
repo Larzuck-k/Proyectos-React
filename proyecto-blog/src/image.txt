@@ -1,7 +1,0 @@
-  <a href="#">
-                  <img
-                    src="https://via.placeholder.com/700x400"
-                    alt=""
-                    className="img-fluid mb20 rounded-3"
-                  ></img>
-                </a>
