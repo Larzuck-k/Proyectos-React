@@ -14,8 +14,10 @@ function App() {
   
   const [posts, setPosts] = useState([]);
   const [images, setImages] = useState({});
-  const [comments, setComments] = useState({});
-  const [userNames, setUserNames] = useState({});
+
+  const [comments, setComments] = useState({}); // Add a state for comments
+  const [userProfiles, setUserProfiles] = useState({}); // Add a state for user profiles
+  const [estado, setEstado] = useState({}); // Add a state for user profiles
 
   useEffect(() => {
     // Call your API to fetch the posts
@@ -50,47 +52,42 @@ function App() {
           setImages((images) => ({ ...images, [post.idPublicacion]: url }));
         })
         .catch((error) => console.error(error));
-    });
-  }, [posts]);
 
-  useEffect(() => {
-    posts.forEach((post) => {
-      fetch(
-        `http://localhost:3000/comentario/listingPID?id=${post.idPublicacion}`
-      )
+      // Fetch comments for each post
+      fetch(`http://localhost:3000/comentario/listingPID?id=${post.idPublicacion}`)
         .then((response) => response.json())
         .then((data) => {
-          setComments((comments) => ({
-            ...comments,
-            [post.idPublicacion]: data,
-          }));
-        })
+          if (Array.isArray(data)) {
+          setComments((comments) => ({ ...comments, [post.idPublicacion]: data }));
+      data.forEach((comment) => {
+            const userId = comment.idUsuario;
+            if (!userProfiles[userId]) {
+              fetch(`http://localhost:3000/usuario/profile`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  idUsuario: userId,
+                }),
+              })
+                .then((response) => response.blob())
+                .then((blob) => {
+                  const url = URL.createObjectURL(blob);
+                  setUserProfiles((userProfiles) => ({ ...userProfiles, [userId]: url }));
+                })
+                .catch((error) => console.error(error));
+            }
+          });
+        }else {
+          console.log("No comments found for post", post.idPublicacion);
+        }})
         .catch((error) => console.error(error));
+setEstado("Aún no hay comentarios.")
+      // Fetch user profiles for each comment
+   
     });
   }, [posts]);
-
-  
-  useEffect(() => {
-    fetch("http://localhost:3000/usuario/data", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        idUsuario: sessionStorage.getItem("idUsuario"),
-    
-      }),
-    })
-     .then((response) => response.json())
-     .then((data) => {
-        const userNamesObj = {};
-        data.forEach((user) => {
-          userNamesObj[user.idUsuario] = user.user;
-        });
-        setUserNames(userNamesObj);
-      })
-     .catch((error) => console.error(error));
-  }, []);
 
   
 
@@ -143,32 +140,29 @@ function App() {
                   <br />
                   <div className="fondo3 inner-shadow rounded p-3">
                   <h3 className="text-white">Comentarios:</h3>
-                    <div className="rounded-3 fondo2 p-2 my-3">
-                 
-                      {comments[post.idPublicacion] &&
-                        Array.isArray(comments[post.idPublicacion]) &&
-                        comments[post.idPublicacion].map((comment) => (
-                          <div className="text-white" key={comment.idComentario}>
-                          <a
-                    href="#"
-                    className="link-light text-decoration-none d-flex align-items-center"
-                  >
-                    <img
-                      src=""
-                      alt=""
-                      width={50}
-                      className="img-fluid rounded-5"
-                    />
-           <h3 className="mx-2">{userNames[comment.idUsuario]}</h3>
-                  </a>
+                    <div className="text-white rounded-3 fondo2 p-2 my-3">
+                    {comments[post.idPublicacion] &&
+      comments[post.idPublicacion].map((comment) => (
+        <div key={comment.idComentario} className="text-white">
+          <div
+          
+            className="mb-1 link-light text-decoration-none d-flex align-items-center"
+          >
+            <img
+              src={userProfiles[comment.idUsuario]}
+              alt=""
+           
+              className="rounded-circle"
+              width="40"
+              height="40"
+            />
+            <h3 className="mx-2">{comment.user}</h3>
+          </div>
 
-
-
-
-                            <div>{comment.ComentarioTexto}</div>
-                            <br />
-                          </div>
-                        ))}
+          <div>{comment.ComentarioTexto}</div>
+          <br />
+        </div>
+      ))|| estado}
                     </div>
                   </div>
                 </div>
