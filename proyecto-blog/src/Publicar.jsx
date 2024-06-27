@@ -129,6 +129,7 @@ const Publicar = () => {
         
               </form>
               <div className="m-1 modal-footer border-black border-opacity-25"></div>
+             
               <div className="m-2 row  ">
               <button
                   type="button"
