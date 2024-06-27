@@ -32,9 +32,11 @@ const handleSubmit = async (event) => {
   .then(response => response.json())
   .then(data =>{
     if(data.status == "success"){
+
       sessionStorage.setItem('user', data.user);
       sessionStorage.setItem('email', data.email);
       sessionStorage.setItem('password', password);
+      sessionStorage.setItem('idUsuario',data.idUsuario);
       window.location.href = '/app';
     }else{
 
@@ -47,6 +49,16 @@ const handleSubmit = async (event) => {
       });
     }
    
+  }).catch(data=>{
+
+    Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "No se ha podido establecer conexión con el servidor",
+      showConfirmButton: false,
+      timer: 1500
+    });
+
   })
 
 };

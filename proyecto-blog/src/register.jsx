@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 import Fondo from "./assets/images/fondo.png";
 import { useState } from "react";
-import Swal from 'sweetalert2'
+
 const Register = () => {
   document.body.style = `background: #0e1b25; 
   background-image: url(${Fondo}); 
@@ -69,6 +70,16 @@ const handleSubmit = async (event) => {
         timer: 1500
       });
     }
+  }).catch(data=>{
+
+    Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "No se ha podido establecer conexión con el servidor",
+      showConfirmButton: false,
+      timer: 1500
+    });
+
   })
   
 };
