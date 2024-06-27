@@ -83,7 +83,7 @@ function App() {
           console.log("No comments found for post", post.idPublicacion);
         }})
         .catch((error) => console.error(error));
-setEstado("Aún no hay comentarios.")
+setEstado("No se ha encontrado comentarios")
       // Fetch user profiles for each comment
    
     });
@@ -162,7 +162,7 @@ setEstado("Aún no hay comentarios.")
           <div>{comment.ComentarioTexto}</div>
           <br />
         </div>
-      ))|| estado}
+      )) ||"Aún no hay comentarios"}
                     </div>
                   </div>
                 </div>
