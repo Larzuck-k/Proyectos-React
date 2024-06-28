@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
 
-const Publicar = () => {
+const Publicar = (props) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [preview, setPreview] = useState(null);
     const [titulo, setTitulo] = useState("");
@@ -39,9 +39,7 @@ const Publicar = () => {
             showConfirmButton: false,
             timer: 1500
           });
-          setTimeout(() => {
-            location.reload()
-          }, "1500");
+          props.cargarPosts();
       })
       .catch((error) => {
       

@@ -8,4 +8,13 @@ export function Validarsesion() {
   }
 }
 
+export function Actualizar(estado) {
+  console.log(estado)
+  let reload 
+  if(estado == true || estado == false ){
+    reload = estado;
+  }
+return reload
+}
+
 export default { Cerrarsesion, Validarsesion };

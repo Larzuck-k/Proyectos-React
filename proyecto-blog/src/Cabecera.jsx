@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { Cerrarsesion } from "./Funciones";
+
 const Cabecera = () => {
   const [profileImage, setProfileImage] = useState(null);
+
+
 
   useEffect(() => {
     fetch("http://localhost:3000/usuario/profile", {
